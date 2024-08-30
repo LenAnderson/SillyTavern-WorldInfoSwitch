@@ -1,0 +1,80 @@
+#rightNavHolder > .drawer-toggle {
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  height: var(--stwis--iconSize);
+  width: var(--stwis--iconSize);
+}
+#rightNavHolder > .drawer-toggle.stwis--char:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  aspect-ratio: 1 / 1;
+  background-image: var(--stwis--avatar);
+  background-size: cover;
+  background-position: top center;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 0px black);
+  pointer-events: none;
+  opacity: 0.8;
+}
+body:not(.stwis--nonDiscord) #rightNavHolder > .drawer-toggle.stwis--char:has(.drawer-icon.openIcon):after {
+  border-radius: 40%;
+}
+#rightNavHolder > .drawer-toggle.stwis--char:hover:after {
+  opacity: 1;
+}
+#rightNavHolder > .drawer-toggle.stwis--char > .drawer-icon:before {
+  display: none;
+}
+.stwis--ctxBlocker {
+  cursor: default;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+}
+.stwis--ctxBlocker .stwis--wrapper {
+  --stwis--y: 100vh;
+  display: flex;
+  bottom: 0;
+  left: var(--nav-bar-width);
+  margin: 0;
+  position: absolute;
+  top: 0;
+}
+body.stwis--nonDiscord .stwis--ctxBlocker .stwis--wrapper {
+  top: var(--stwis--y);
+}
+.stwis--ctxBlocker .stwis--ctxMenu {
+  flex: 0 0 auto;
+  flex-direction: column;
+  overflow: auto;
+  min-width: 100px;
+}
+.stwis--ctxBlocker .stwis--ctxMenu.stwis--secondary {
+  flex: 1 1 auto;
+}
+.stwis--ctxBlocker .stwis--ctxMenu .stwis--ctxItem {
+  display: block;
+  gap: 1em;
+  align-items: center;
+  opacity: 0.5;
+  padding: 0;
+  transition: 200ms;
+}
+.stwis--ctxBlocker .stwis--ctxMenu .stwis--ctxItem:hover {
+  opacity: 1;
+}
+.stwis--ctxBlocker .stwis--ctxMenu .stwis--ctxItem label {
+  display: flex;
+  gap: 0.5em;
+  align-items: baseline;
+  cursor: pointer;
+  padding: 5px;
+}
+.stwis--ctxBlocker .stwis--ctxMenu .stwis--ctxItem label .stwis--ctxName {
+  flex: 1 1 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

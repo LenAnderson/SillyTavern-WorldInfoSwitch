@@ -1,0 +1,80 @@
+#rightNavHolder > .drawer-toggle {
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+	height: var(--stwis--iconSize);
+	width: var(--stwis--iconSize);
+	&.stwis--char {
+		&:after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			aspect-ratio: 1 / 1;
+			background-image: var(--stwis--avatar);
+			background-size: cover;
+			background-position: top center;
+			border-radius: 50%;
+			filter: drop-shadow(0 0 0px black);
+			pointer-events: none;
+			opacity: 0.8;
+		}
+		body:not(.stwis--nonDiscord) &:has(.drawer-icon.openIcon):after { border-radius: 40%; }
+		&:hover:after { opacity: 1; }
+
+		> .drawer-icon{
+			&:before { display: none; }
+		}
+	}
+}
+
+.stwis--ctxBlocker {
+    cursor: default;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+	.stwis--wrapper {
+		--stwis--y: 100vh;
+
+		display: flex;
+
+		bottom: 0;
+        left: var(--nav-bar-width);
+		margin: 0;
+        position: absolute;
+		top: 0;
+		body.stwis--nonDiscord & {
+			top: var(--stwis--y);
+		}
+	}
+    .stwis--ctxMenu {
+		flex: 0 0 auto;
+		&.stwis--secondary {
+			flex: 1 1 auto;
+		}
+		flex-direction: column;
+		overflow: auto;
+		min-width: 100px;
+        .stwis--ctxItem {
+            display: block;
+            gap: 1em;
+            align-items: center;
+            opacity: 0.5;
+			padding: 0;
+            transition: 200ms;
+            &:hover { opacity: 1; }
+            label {
+				display: flex;
+				gap: 0.5em;
+				align-items: baseline;
+				cursor: pointer;
+				padding: 5px;
+				.stwis--ctxName {
+					flex: 1 1 auto;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+				}
+            }
+        }
+    }
+}
