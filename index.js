@@ -40,7 +40,7 @@ const contextListener = async(evt)=>{
     if (menu) return;
     menu = true;
     evt.preventDefault();
-    const books = [...world_names].slice(1);
+    const books = [...world_names];
     const active = getBookNames();
     const entries = {};
     books.forEach(async(it)=>{
