@@ -54,6 +54,9 @@ body.stwis--nonDiscord .stwis--ctxBlocker .stwis--wrapper {
 .stwis--ctxBlocker .stwis--ctxMenu.stwis--secondary {
   flex: 1 1 auto;
 }
+.stwis--ctxBlocker .stwis--ctxMenu.stwis--secondary .stwis--ctxName {
+  width: 300px;
+}
 .stwis--ctxBlocker .stwis--ctxMenu .stwis--ctxItem {
   display: block;
   gap: 1em;
@@ -61,6 +64,7 @@ body.stwis--nonDiscord .stwis--ctxBlocker .stwis--wrapper {
   opacity: 0.5;
   padding: 0;
   transition: 200ms;
+  border-bottom: 2px solid var(--SmartThemeBorderColor);
 }
 .stwis--ctxBlocker .stwis--ctxMenu .stwis--ctxItem:hover {
   opacity: 1;
