@@ -164,7 +164,7 @@ const checkDiscord = async()=>{
     setTimeout(checkDiscord, 2000);
 };
 
-const btn = /**@type {HTMLElement}*/(document.querySelector('#WI-SP-button'));
+const btn = /**@type {HTMLElement}*/(document.querySelector('#WI-SP-button > .drawer-toggle'));
 const icon = /**@type {HTMLElement}*/(document.querySelector('#WIDrawerIcon'));
 let count = 0;
 let books = [];

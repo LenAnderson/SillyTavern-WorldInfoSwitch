@@ -53,13 +53,13 @@ body.stwis--nonDiscord .stwis--ctxBlocker .stwis--wrapper {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-#WI-SP-button:not([data-stwis--count="0"]) {
+#WI-SP-button > .drawer-toggle:not([data-stwis--count="0"]) {
   position: relative;
 }
-#WI-SP-button:not([data-stwis--count="0"]):hover::after {
+#WI-SP-button > .drawer-toggle:not([data-stwis--count="0"]):hover::after {
   opacity: 1;
 }
-#WI-SP-button:not([data-stwis--count="0"])::after {
+#WI-SP-button > .drawer-toggle:not([data-stwis--count="0"])::after {
   content: attr(data-stwis--count);
   position: absolute;
   bottom: 0;
@@ -77,13 +77,13 @@ body.stwis--nonDiscord .stwis--ctxBlocker .stwis--wrapper {
   pointer-events: none;
   transition: 200ms;
 }
-#WI-SP-button:not([data-stwis--count="0"]).stwis--in::after {
+#WI-SP-button > .drawer-toggle:not([data-stwis--count="0"]).stwis--in::after {
   animation: stwis--popin 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-#WI-SP-button:not([data-stwis--count="0"]).stwis--out::after {
+#WI-SP-button > .drawer-toggle:not([data-stwis--count="0"]).stwis--out::after {
   animation: stwis--popin 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) reverse;
 }
-#WI-SP-button:not([data-stwis--count="0"]).stwis--bounce::after {
+#WI-SP-button > .drawer-toggle:not([data-stwis--count="0"]).stwis--bounce::after {
   animation: stwis--bounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation-iteration-count: 2;
 }
