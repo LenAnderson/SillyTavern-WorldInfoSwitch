@@ -166,7 +166,7 @@ const checkDiscord = async()=>{
 
 const btn = /**@type {HTMLElement}*/(document.querySelector('#WI-SP-button > .drawer-toggle'));
 const icon = /**@type {HTMLElement}*/(document.querySelector('#WIDrawerIcon'));
-let count = 0;
+let count = -1;
 let books = [];
 const updateIcon = async()=>{
     const newBooks = getBookNames();
@@ -196,6 +196,7 @@ const updateIcon = async()=>{
     }
     books = newBooks;
 };
+updateIcon();
 eventSource.on(event_types.SETTINGS_UPDATED, ()=>updateIcon());
 
 const init = ()=>{
