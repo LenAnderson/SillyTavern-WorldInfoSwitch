@@ -2,6 +2,7 @@ import { characters, chat_metadata, event_types, eventSource, saveSettingsDeboun
 import { extension_settings, getContext } from '../../../extensions.js';
 import { groups } from '../../../group-chats.js';
 import { executeSlashCommandsWithOptions } from '../../../slash-commands.js';
+import { delay } from '../../../utils.js';
 import { loadWorldInfo, saveWorldInfo, world_info, world_names } from '../../../world-info.js';
 
 let isDiscord = null;
@@ -163,9 +164,44 @@ const checkDiscord = async()=>{
     setTimeout(checkDiscord, 2000);
 };
 
+const btn = /**@type {HTMLElement}*/(document.querySelector('#WI-SP-button'));
+const icon = /**@type {HTMLElement}*/(document.querySelector('#WIDrawerIcon'));
+let count = 0;
+let books = [];
+const updateIcon = async()=>{
+    const newBooks = getBookNames();
+    icon.title = `World Info\n---\n${newBooks.join('\n')}`;
+    if (count != newBooks.length) {
+        if (newBooks.length == 0) {
+            btn.classList.add('stwis--out');
+            await delay(510);
+            btn.setAttribute('data-stwis--count', newBooks.length.toString());
+            btn.classList.remove('stwis--out');
+        } else if (count == 0) {
+            btn.classList.add('stwis--in');
+            btn.setAttribute('data-stwis--count', newBooks.length.toString());
+            await delay(510);
+            btn.classList.remove('stwis--in');
+        } else {
+            btn.setAttribute('data-stwis--count', newBooks.length.toString());
+            btn.classList.add('stwis--bounce');
+            await delay(1010);
+            btn.classList.remove('stwis--bounce');
+        }
+        count = newBooks.length;
+    } else if (new Set(newBooks).difference(new Set(books)).size > 0) {
+        btn.classList.add('stwis--bounce');
+        await delay(1010);
+        btn.classList.remove('stwis--bounce');
+    }
+    books = newBooks;
+};
+eventSource.on(event_types.SETTINGS_UPDATED, ()=>updateIcon());
+
 const init = ()=>{
     trigger = document.querySelector('#WI-SP-button > .drawer-toggle');
     trigger.addEventListener('contextmenu', contextListener);
     checkDiscord();
+    updateIcon();
 };
 init();
